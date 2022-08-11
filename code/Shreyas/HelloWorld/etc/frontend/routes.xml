@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard"> 
+    <!-- route is specified after module/{route_id} -->
+        <route frontName="helloworld" id="helloworld">
+            <module name="Shreyas_HelloWorld"/>
+        </route>
+
+            <!-- <route frontName="showdata" id="showdata">
+                <module name="Shreyas_HelloWorld"/>
+            </route> -->
+            
+    </router>
+</config>

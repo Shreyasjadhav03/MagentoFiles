@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2021/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+<menu>
+<add id="Shreyas_HelloWorld::first_level_demo"
+title="My Menu"
+module="Shreyas_HelloWorld"
+sortOrder="20"
+resource="Magento_Backend::content" />
+<add id="Shreyas_HelloWorld::second_level_demo"
+title="Sub Menu"
+module="Shreyas_HelloWorld"
+sortOrder="1"
+action="menuitem/index/index"
+parent="Shreyas_HelloWorld::first_level_demo"
+resource="Magento_Backend::content" />
+</menu>
+</config>

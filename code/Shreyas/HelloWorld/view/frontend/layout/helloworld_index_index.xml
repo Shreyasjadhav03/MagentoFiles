@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="content">
+    <!-- The Layout is the major path of view layer in Magento 2 module. The layout file is a XML file which will define the page structure -->
+    <!-- When rendering page, Magento will check the layout file to find the handle for the page and then load Block and Template -->
+        <block class="Shreyas\HelloWorld\Block\Display" name="helloworld" template="Shreyas_HelloWorld::sayhello.phtml" />
+        <!-- In the layout file, we define the template by Shreyas_HelloWorld::sayhello.phtml. It mean that Magento will find the file name sayhello.phtml in templates folder of module  Shreyas_HelloWorld. The template folder of the module is app/code/{vendor_name}/{module_name}/view/frontend/templates/ -->
+    </referenceContainer>
+</page>

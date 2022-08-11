@@ -1,0 +1,14 @@
+{
+    "sample_customer_data": {
+        "column": {
+            "id": true,
+            "name": true,
+            "email": true,
+            "telephone": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
