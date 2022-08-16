@@ -8,18 +8,15 @@ use Magento\Framework\Model\AbstractExtensibleModel;
 class TableInsert extends AbstractExtensibleModel implements TableInsertInterface
 {
     /**
-     * Get id
-     * @return string|null
+     * @inheritDoc
      */
     public function getId()
     {
-        return $this->get(self::ID);
+        return parent::getData(self::ID);
     }
  
     /**
-     * Set id
-     * @param string $id
-     * @return \Shreyas\HelloWorld\Api\Data\TableInsertInterface
+     * @inheritDoc
      */
     public function setId($id)
     {
@@ -27,37 +24,31 @@ class TableInsert extends AbstractExtensibleModel implements TableInsertInterfac
     }
 
     /**
-     * Get name
-     * @return string|null
+     * @inheritDoc
      */
     public function getName()
     {
-        return $this->get(self::NAME);
+        return parent::getData(self::NAME);
     }
  
-    /**
-     * Set name
-     * @param string $name
-     * @return \Shreyas\HelloWorld\Api\Data\TableInsertInterface
+   /**
+     * @inheritDoc
      */
     public function setName($name)
     {
         return $this->setData(self::NAME, $name);
     }
 
-    /**
-     * Get email
-     * @return string|null
+   /**
+     * @inheritDoc
      */
     public function getEmail()
     {
-        return $this->get(self::EMAIL);
+        return parent::getData(self::EMAIL);
     }
  
     /**
-     * Set email
-     * @param string $email
-     * @return \Shreyas\HelloWorld\Api\Data\TableInsertInterface
+     * @inheritDoc
      */
     public function setEmail($email)
     {
@@ -65,18 +56,15 @@ class TableInsert extends AbstractExtensibleModel implements TableInsertInterfac
     }
 
     /**
-     * Get telephone
-     * @return string|null
+     * @inheritDoc
      */
     public function getTelephone()
     {
-        return $this->get(self::TELEPHONE);
+        return parent::getData(self::TELEPHONE);
     }
  
-    /**
-     * Set telephone
-     * @param string $telephone
-     * @return \Shreyas\HelloWorld\Api\Data\TableInsertInterface
+   /**
+     * @inheritDoc
      */
     public function setTelephone($telephone)
     {
@@ -84,18 +72,15 @@ class TableInsert extends AbstractExtensibleModel implements TableInsertInterfac
     }
 
     /**
-     * Get created_at
-     * @return string|null
+     * @inheritDoc
      */
     public function getCreatedAt()
     {
-        return $this->get(self::CREATED_AT);
+        return parent::getData(self::CREATED_AT);
     }
  
     /**
-     * Set created_at
-     * @param string $createdAt
-     * @return \Shreyas\HelloWorld\Api\Data\TableInsertInterface
+     * @inheritDoc
      */
     public function setCreatedAt($createdAt)
     {

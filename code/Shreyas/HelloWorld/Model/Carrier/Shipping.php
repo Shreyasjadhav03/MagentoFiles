@@ -51,7 +51,7 @@ class Shipping extends \Magento\Shipping\Model\Carrier\AbstractCarrier implement
      */
     public function getAllowedMethods()
     {
-        return [$this->_code => $this->getConfigData('name')];
+        return [$this->_code = $this->getConfigData('name')];
     }
 
     /**

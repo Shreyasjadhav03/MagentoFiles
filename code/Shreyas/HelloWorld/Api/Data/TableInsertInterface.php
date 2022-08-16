@@ -2,7 +2,7 @@
 
 namespace Shreyas\HelloWorld\Api\Data;
 
-use \Magento\Framework\Api\ExtensibleDataInterface;
+use Magento\Framework\Api\ExtensibleDataInterface;
 
 interface TableInsertInterface extends ExtensibleDataInterface
 {

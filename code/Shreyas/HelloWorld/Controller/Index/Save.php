@@ -1,89 +1,70 @@
 <?php
-
+ 
 namespace Shreyas\HelloWorld\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\Exception\LocalizedException;
-use Shreyas\HelloWorld\Model\TableInsert as form;
+use Shreyas\HelloWorld\Api\Data\TableInsertInterface;
+use Shreyas\HelloWorld\Api\TableInsertRepositoryInterface;
+use Shreyas\HelloWorld\Model\TableInsert;
 use Shreyas\HelloWorld\Model\ResourceModel\TableInsert as formResourceModel;
-
 class Save extends Action
 {
-    /**
-     * @var form
-     */
-    protected $form;
-    /**
-     * @var formResourceModel
-     */
-    protected $formResourceModel;
+    protected $forminterface;
+    private $formrepositoryinterface;
+    private $data;
 
-    /**
-     * Add constructor.
-     * @param Context $context
-     * @param form $Form
-     * @param formResourceModel $FormResourceModel
-     */
     public function __construct(
+       TableInsertInterface $forminterface,
+        TableInsertRepositoryInterface  $formrepositoryinterface,
         Context $context,
-        form $form,
+        TableInsert $data
+        ,
         formResourceModel $formResourceModel
-    ) {
-        $this->form = $form;
+
+    )
+    {
+        $this->data=$data;
+        $this->forminterface = $forminterface;
+        $this->formrepositoryinterface = $formrepositoryinterface;
+        $this->context=$context;
         $this->formResourceModel = $formResourceModel;
         parent::__construct($context);
     }
 
     public function execute()
-    {
-        // if (!$this->getRequest()->isPost) {
-        //     return $this->resultRedirectFactory->create()->setPath('*/*/');
-        // }
-       
-        $params = $this->getRequest()->getParams();
-       
-           array_pop($params);
-           var_dump($params);
-           
 
-        $form = $this->form->setData($params);//TODO: Challenge Modify here to support the edit save functionality
+    {
+        $params = $this->getRequest()->getParams();
+        //$model=$this->_objectManager->create('Shreyas\HelloWorld\Model\TableInsert');
+        $model=$this->data->setData($params);
+        $model->setData($params);
+        // //var_dump($params['name']);
+        // $this->forminterface->setName($params['name']);
+        //$this->forminterface->setEmail($params['email']);
+         //$this->forminterface->setTelephone($params['telephone']);
+        // //var_dump($this->formResourceModel);
+
+        // echo'<pre>';
+        // print_r($params);
+        //exit;
+       
 
         try {
-            $this->formResourceModel->save($form);
+            $this->formResourceModel->save($model);
             $this->messageManager->addSuccessMessage(__("Successfully added the Form %1", $params['name']));
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage(__("Something went wrong....."));
-            //$e->getMessage();
+            // print_r($e->getMessage());exit;
             
         }
-        // / Redirect back to Form display page /
-        $redirect = $this->resultRedirectFactory->create();
-        $redirect->setPath('*/*/');
-        return $redirect;
+
+
+        // $redirect = $this->resultRedirectFactory->create();
+        // $redirect->setPath('helloworld/index/customerform');
+        // return $redirect;
+        
+        
     }
-
-
-
-
-    private function validatedParams()
-    {
-        $request = $this->getRequest();
-        if (trim($request->getParam('first_name')) === '') {
-            throw new LocalizedException(__('Enter the First Name and try again.'));
-        }
-		if (trim($request->getParam('last_name')) === '') {
-            throw new LocalizedException(__('Enter the Last Name and try again.'));
-        }
-		if (false === \strpos($request->getParam('email'), '@')) {
-            throw new LocalizedException(__('The email address is invalid. Verify the email address and try again.'));
-        }
-		if (trim($request->getParam('phone')) === '') {
-            throw new LocalizedException(__('Enter the Phone Number and try again.'));
-        }
-		if (trim($request->getParam('message')) === '') {
-            throw new LocalizedException(__('Enter your message and try again.'));
-        }
-        return $request->getParams();
-    }
+    
 }

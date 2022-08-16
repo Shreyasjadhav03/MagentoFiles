@@ -14,6 +14,7 @@ class CustomerForm extends Action
     {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
+        return parent::__construct($context);
     }
 
     public function execute()
