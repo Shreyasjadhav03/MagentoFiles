@@ -60,9 +60,9 @@ class Save extends Action
         }
 
 
-        // $redirect = $this->resultRedirectFactory->create();
-        // $redirect->setPath('helloworld/index/customerform');
-        // return $redirect;
+        $redirect = $this->resultRedirectFactory->create();
+        $redirect->setPath('helloworld/index/customerform');
+        return $redirect;
         
         
     }

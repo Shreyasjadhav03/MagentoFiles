@@ -37,10 +37,50 @@
             </fieldset>
             <div class="actions-toolbar">
                 <div class="primary">
-                    <button type="submit" class="action submit primary" title="Save"><span><?= $block->
+                    <button type="submit" id="click-me" class="action submit primary" title="Save"><span><?= $block->
                         escapeHtmlAttr(__('Save')) ?></span></button>
                 </div>
             </div>
-        </form>
+            </form> 
     </div>
 </div>
+<div id="popup-modal" >
+  <p> Thank you for registration. </p>
+</div>
+
+<script>
+      var name= document.getElementById('name').innerHTML;
+    
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                buttons: [{
+                    text: $.mage.__('Continue'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('#popup-modal'));
+            $("#click-me").on('click',function(){
+
+                $("#popup-modal").modal("openModal");
+                alert("HELLO"+name);
+            });
+
+        }
+    );
+    
+</script>

@@ -6,4 +6,8 @@
 
 <preference for="Shreyas\HelloWorld\Api\TableInsertRepositoryInterface" type="Shreyas\HelloWorld\Model\TableInsertRepository" />
 
+<type name="Magento\Catalog\Model\Product">
+    <plugin name="change_product" type="Shreyas\HelloWorld\Plugin\CustomPrice" sortOrder="1" disabled="false"/>
+</type>
+
 </config>
