@@ -1,6 +1,16 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
+        <social_section>
+            <profile_group>
+                <enable_field>1</enable_field>
+                <facebook_field>https://www.facebook.com/</facebook_field>
+                <instagram_field>https://www.instagram.com/</instagram_field>
+                <twitter_field>https://www.twitter.com/</twitter_field>
+            </profile_group>
+        </social_section>
+    </default>
+    <default>
         <carriers>
             <simpleshipping>
                 <active>1</active>
