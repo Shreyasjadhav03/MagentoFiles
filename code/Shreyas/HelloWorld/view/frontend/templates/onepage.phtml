@@ -1,0 +1,99 @@
+<?php
+
+/** @var $block \Magento\Checkout\Block\Onepage */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+
+use Magento\Customer\Model\Session as customer;
+use Magento\Customer\Block\Address\Grid;
+/** @var \Magento\Customer\Block\Address\Grid $block */
+
+$blockObj= $block->getLayout()->createBlock('Shreyas\HelloWorld\Block\CustomerAddress');
+
+$data=$blockObj->getDefaultBillingAddress();
+$address=$blockObj->getDefaultShippingAddress()
+//echo $data;
+
+// foreach($data as $key=>$value){
+//     echo $key ."=>".$value;
+// }
+
+?>
+
+<div id="checkout" data-bind="scope:'checkout'" class="checkout-container">
+    <div id="checkout-loader" data-role="checkout-loader" class="loading-mask" data-mage-init='{"checkoutLoader": {}}'>
+        <div class="loader">
+            <img src="<?= $block->escapeUrl($block->getViewFileUrl('images/loader-1.gif')) ?>"
+                 alt="<?= $block->escapeHtmlAttr(__('Loading...')) ?>">
+                 
+        </div>
+    </div>
+    <?= /* @noEscape */ $secureRenderer->renderStyleAsTag("position: absolute;", "#checkout-loader img") ?>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#checkout": {
+                "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+            }
+        }
+    </script>
+    <?php $serialitRegi= <<<script
+        window.checkoutConfig = {$serializedCheckoutConfig};
+        // Create aliases for customer.js model from customer module
+        window.isCustomerLoggedIn = window.checkoutConfig.isCustomerLoggedIn;
+        window.customerData = window.checkoutConfig.customerData;
+script;
+    ?>
+    <?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
+    <?php $scriptString = <<<script
+        require([
+            'mage/url',
+            'Magento_Ui/js/block-loader'
+        ], function(url, blockLoader) {
+            blockLoader("{$block->escapeJs($block->escapeUrl($block->getViewFileUrl('images/loader-1.gif')))}");
+            return url.setBaseUrl('{$block->escapeJs($block->escapeUrl($block->getBaseUrl()))}');
+        })
+script;
+    ?>
+    <?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
+</div>
+<div id="custom-popup-modal">
+  <p>Default Billing Address</p>
+  <p><?php echo $data['firstname']?></p>
+  <p><?php echo "<pre>";print_r($data->__toArray());?></p>
+  <p>Default Shipping Address</p>
+  <p><?php echo "<pre>";print_r($address->__toArray());?></p>
+  
+</div>
+
+<script>
+require(
+    [
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ],
+    function(
+        $,
+        modal
+    ) {
+        var options = {
+            type: 'popup',
+            responsive: true,
+            innerScroll: true,
+            modalClass: 'custom-popup-modal',
+            buttons: [{
+                text: $.mage.__('Close'),
+                class: '',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+
+        var popup = modal(options, $('#custom-popup-modal'));
+
+        $( document ).ready(function() {
+            $('#custom-popup-modal').modal('openModal');
+        });     
+    }
+);
+</script>
