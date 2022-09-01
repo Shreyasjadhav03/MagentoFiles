@@ -36,7 +36,8 @@ $address=$blockObj->getDefaultShippingAddress()
             }
         }
     </script>
-    <?php $serialitRegi= <<<script
+    <?php $serializedCheckoutConfig = /* @noEscape */ $block->getSerializedCheckoutConfig();
+    $scriptString = <<<script
         window.checkoutConfig = {$serializedCheckoutConfig};
         // Create aliases for customer.js model from customer module
         window.isCustomerLoggedIn = window.checkoutConfig.isCustomerLoggedIn;
@@ -58,7 +59,6 @@ script;
 </div>
 <div id="custom-popup-modal">
   <p>Default Billing Address</p>
-  <p><?php echo $data['firstname']?></p>
   <p><?php echo "<pre>";print_r($data->__toArray());?></p>
   <p>Default Shipping Address</p>
   <p><?php echo "<pre>";print_r($address->__toArray());?></p>
