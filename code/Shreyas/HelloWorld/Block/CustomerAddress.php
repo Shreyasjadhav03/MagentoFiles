@@ -1,51 +1,51 @@
 <?php
-namespace Shreyas\HelloWorld\Block;
+// namespace Shreyas\HelloWorld\Block;
 
-use Magento\Customer\Api\Data\AddressInterface;
-
-
-class CustomerAddress extends \Magento\Framework\View\Element\Template
-{
-
-protected $customer;
+// use Magento\Customer\Api\Data\AddressInterface;
 
 
-public function __construct(\Magento\Customer\Model\Session $customer,
-\Magento\Customer\Api\CustomerRepositoryInterface $customerRepository,
-\Magento\Customer\Api\AccountManagementInterface $accountManagement,
+// class CustomerAddress extends \Magento\Framework\View\Element\Template
+// {
 
-AddressInterface $addressInterface
-)
+// protected $customer;
 
 
-{
-    $this->customerRepository = $customerRepository;
-    $this->customer = $customer;
-    $this->addressInterface=$addressInterface;
-    $this->accountManagement=$accountManagement;
-}
+// public function __construct(\Magento\Customer\Model\Session $customer,
+// \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository,
+// \Magento\Customer\Api\AccountManagementInterface $accountManagement,
 
-public function getDefaultBillingAddress()
-{
+// AddressInterface $addressInterface
+// )
+
+
+// {
+//     $this->customerRepository = $customerRepository;
+//     $this->customer = $customer;
+//     $this->addressInterface=$addressInterface;
+//     $this->accountManagement=$accountManagement;
+// }
+
+// public function getDefaultBillingAddress()
+// {
    
-    $customerId = $this->customer->getId();
-    //echo $customerId;
+//     $customerId = $this->customer->getId();
+//     //echo $customerId;
 
-    $address = $this->accountManagement->getDefaultBillingAddress($customerId);
-   return $address;
+//     $address = $this->accountManagement->getDefaultBillingAddress($customerId);
+//    return $address;
 
-}
-public function getDefaultShippingAddress()
-{
-    $customerId = $this->customer->getId();
-    //echo $customerId;
+// }
+// public function getDefaultShippingAddress()
+// {
+//     $customerId = $this->customer->getId();
+//     //echo $customerId;
 
-    $address = $this->accountManagement->getDefaultShippingAddress($customerId);
-   return $address;
+//     $address = $this->accountManagement->getDefaultShippingAddress($customerId);
+//    return $address;
 
-}
+// }
 
-}
+// }
   //     $customer = $this->customerRepository->getById($customerId);
 
 // foreach ($customer->getAddresses() as $address) {

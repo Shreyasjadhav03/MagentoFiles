@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+<preference for="Magento\OfflineShipping\Block\Adminhtml\Carrier\Tablerate\Grid"       type="Shreyas\FuelCharges\Block\Adminhtml\Carrier\Tablerate\Grid" />
+
+<type name="Magento\OfflineShipping\Model\ResourceModel\Carrier\Tablerate">
+    <plugin name="fuel_surcharge" type="Shreyas\FuelCharges\Plugin\Tablerate" sortOrder="1" disabled="false"/>
+</type>
+
+
+</config>
