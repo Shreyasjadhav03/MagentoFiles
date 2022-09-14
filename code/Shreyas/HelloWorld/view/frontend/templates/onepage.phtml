@@ -7,7 +7,7 @@ use Magento\Customer\Model\Session as customer;
 use Magento\Customer\Block\Address\Grid;
 /** @var \Magento\Customer\Block\Address\Grid $block */
 
-$blockObj= $block->getLayout()->createBlock('Shreyas\HelloWorld\Block\CustomerAddress');
+//$blockObj= $block->getLayout()->createBlock('Shreyas\HelloWorld\Block\CustomerAddress');
 
 // $data=$blockObj->getDefaultBillingAddress();
 // $address=$blockObj->getDefaultShippingAddress()
@@ -15,7 +15,12 @@ $blockObj= $block->getLayout()->createBlock('Shreyas\HelloWorld\Block\CustomerAd
 
 // foreach($data as $key=>$value){
 //     echo $key ."=>".$value;
-// }
+// 
+
+// <?php echo "<pre>";print_r($data->__toArray()); in <p> in script tag in default billing s\address and shipping address
+
+
+//}
 
 ?>
 
@@ -59,9 +64,10 @@ script;
 </div>
 <div id="custom-popup-modal">
   <p>Default Billing Address</p>
-  <p><?php echo "<pre>";print_r($data->__toArray());?></p>
+  <!-- <p></p> -->
+ 
   <p>Default Shipping Address</p>
-  <p><?php echo "<pre>";print_r($address->__toArray());?></p>
+ 
   
 </div>
 
